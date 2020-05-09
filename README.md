@@ -18,7 +18,7 @@
  - Expose the Load balancer endpoint
  
  *These three phases are divided into three different ansible roles in this project. They are*
- - *wordpress-networking
- - *image-build
- - *deployment
+ - *wordpress-networking*
+ - *image-build*
+ - *deployment*
  
