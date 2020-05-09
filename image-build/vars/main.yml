@@ -1,0 +1,9 @@
+---
+# vars file for deployment
+ec2_instance_type: 't2.micro'
+ec2_image: 'ami-02e98f78'
+ec2_region: 'us-east-1'
+ec2_key_name: 'vagrant_test'
+ec2_group_id: 'sg-085db7ab87d3ed9f3'
+ec2_tags_name: 'dev'
+

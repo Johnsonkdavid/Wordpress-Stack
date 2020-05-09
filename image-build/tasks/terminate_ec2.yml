@@ -1,0 +1,6 @@
+---
+- name: Terminate instance after the AMI creation
+  ec2:
+    state: 'absent'
+    region: us-east-1
+    instance_ids: '{{ ec2.instance_ids[0] }}'

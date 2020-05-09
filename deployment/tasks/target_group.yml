@@ -1,0 +1,14 @@
+---
+- name: Creating a Traget group 
+  elb_target_group:
+    name : Wordpress-TG
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    protocol: http
+    successful_response_codes: "300-310"
+    health_check_path: /
+    port: 80
+    vpc_id: '{{ wordpress_vpc.vpc.id }}'
+    state: present
+  register: tg
+- debug: var=tg.target_group_arn

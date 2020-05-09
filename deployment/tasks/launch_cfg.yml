@@ -1,0 +1,21 @@
+---
+- name : Creating launch configuraion for ASG
+  ec2_lc:
+    name: Wordpress-LC 
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    region: us-east-1
+    image_id: '{{ ami.image_id }}'
+    key_name: vagrant_test    
+    security_groups:  '{{  asg_sg.group_id }}'
+    instance_type: t2.micro
+    vpc_id: '{{ wordpress_vpc.vpc.id }}'
+    volumes:
+      - device_name: /dev/xvda
+        volume_size: 8
+        delete_on_termination: true
+  register: launchconfig 
+
+- name: Debug mode for launchconfig.target_group_arn
+  debug:
+      var: launchconfig

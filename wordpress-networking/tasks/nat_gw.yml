@@ -1,0 +1,9 @@
+- name: Create new nat gateway and allocate new EIP.
+  ec2_vpc_nat_gateway:
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    state: present
+    subnet_id: '{{Wordpress_pub_subnet_1.subnet.id}}'
+    wait: yes
+    region: us-east-1
+  register: new_nat_gateway  

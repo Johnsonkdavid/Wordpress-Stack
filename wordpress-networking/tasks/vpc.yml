@@ -1,0 +1,11 @@
+- name: VPC creation 
+  ec2_vpc_net:
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    name: wordpress-vpc
+    cidr_block: '{{vpc_cidr_block}}'
+    region: '{{vpc_region}}'
+    tenancy: default
+  register: wordpress_vpc
+- debug: var=wordpress_vpc.vpc.id
+

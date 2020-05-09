@@ -1,0 +1,31 @@
+---
+ - name: Configure Metric Alarms and link to Scaling Policies
+   ec2_metric_alarm:
+     region: us-east-1
+     name: "{{ item.name }}"
+     state: present
+     metric: "CPUUtilization"
+     namespace: "AWS/EC2"
+     statistic: "Average"
+     comparison: "{{ item.comparison }}"
+     threshold: "{{ item.threshold }}"
+     period: 60
+     evaluation_periods: 5
+     unit: "Percent"
+     dimensions:
+       AutoScalingGroupName: Wordpress-ASG
+     alarm_actions: "{{ item.alarm_actions }}"
+   with_items:
+     - name: Wordpress-ScaleUp
+       comparison: ">="
+       threshold: 75.0
+       alarm_actions:
+         - "{{ sp_result.results[0].arn }}"
+
+     - name: Wordpress-ScaleDown
+       comparison: "<="
+       threshold: 40.0
+       alarm_actions:
+         - "{{ sp_result.results[1].arn }}"
+   register: metrics_result
+

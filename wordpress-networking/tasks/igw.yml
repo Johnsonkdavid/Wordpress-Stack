@@ -1,0 +1,9 @@
+- name: Set up public subnet route table
+  ec2_vpc_igw:
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    vpc_id: '{{wordpress_vpc.vpc.id}}'
+    tags:
+      Name: wordpress-igw
+    state: present
+  register: igw

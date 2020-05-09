@@ -1,0 +1,16 @@
+---
+- name: Determine Metric Alarm configuration
+  set_fact:
+    metric_alarms:
+      - name: Wordpress-ScaleUp
+        comparison: ">="
+        threshold: 75.0
+        alarm_actions:
+          - "{{ sp_result.results[0].arn }}"
+
+      - name: Wordpress-ScaleDown
+        comparison: "<="
+        threshold: 40.0
+        alarm_actions:
+          - "{{ sp_result.results[1].arn }}"
+

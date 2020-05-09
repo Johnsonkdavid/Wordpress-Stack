@@ -1,0 +1,13 @@
+- name: Set up vpc s3 endpoint for Private subnets
+  ec2_vpc_endpoint:
+    state: present
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    region: us-east-1
+    vpc_id: '{{wordpress_vpc.vpc.id}}'
+    service: com.amazonaws.us-east-1.s3
+#    policy_file: "{{ role_path }}/files/endpoint_policy.json"
+    route_table_ids:
+      - '{{ public_route_table.route_table.route_table_id  }}'
+      - '{{ private_route_table.route_table.route_table_id  }}'
+  register: new_vpc_endpoint  

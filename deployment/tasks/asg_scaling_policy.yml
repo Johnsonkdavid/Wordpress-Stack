@@ -1,0 +1,23 @@
+---
+- name: Configure Scaling Policies
+  ec2_scaling_policy:
+    region: us-east-1
+    name: "{{ item.name }}"
+    asg_name: Wordpress-ASG
+    state: present
+    adjustment_type: "{{ item.adjustment_type }}"
+    min_adjustment_step: "{{ item.min_adjustment_step }}"
+    scaling_adjustment: "{{ item.scaling_adjustment }}"
+    cooldown: "{{ item.cooldown }}"
+  with_items:
+    - name: "Increase Group Size"
+      adjustment_type: "ChangeInCapacity"
+      scaling_adjustment: +1
+      min_adjustment_step: 1
+      cooldown: 180
+    - name: "Decrease Group Size"
+      adjustment_type: "ChangeInCapacity"
+      scaling_adjustment: -1
+      min_adjustment_step: 1
+      cooldown: 300
+  register: sp_result   

@@ -1,0 +1,19 @@
+- name: Create and associate 
+  ec2_vpc_nacl:
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    vpc_id: '{{wordpress_vpc.vpc.id}}'
+    name: wordpress-NACLS
+    region: us-east-1
+    subnets: 
+      - '{{Wordpress_priv_subnet_1.subnet.id }}'
+      - '{{Wordpress_priv_subnet_2.subnet.id }}' 
+    ingress:
+      # rule no, protocol, allow/deny, cidr, icmp_type, icmp_code, port from, port to
+                                                  
+      - [100, 'tcp', 'allow', '0.0.0.0/0', null, null, 22, 22]
+      - [200, 'tcp', 'allow', '0.0.0.0/0', null, null, 80, 80]
+      - [300, 'tcp', 'allow', '0.0.0.0/0', null, null, 443, 443]
+    egress:
+      - [100, 'all', 'allow', '0.0.0.0/0', null, null, null, null]
+    state: present

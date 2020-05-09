@@ -1,0 +1,13 @@
+---
+# tasks file for deployment
+- include_vars:
+    file: creds.yml
+- include_tasks: Loadbalancer_SG.yml
+- include_tasks: Asg_SG.yml
+- include_tasks: launch_cfg.yml
+- include_tasks: target_group.yml  
+- include_tasks: loadbalancer.yml
+- include_tasks: asg.yml
+- include_tasks: asg_scaling_policy.yml
+- include_tasks: metric_alarm.yml
+- include_tasks: metric_scaling.yml  

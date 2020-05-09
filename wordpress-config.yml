@@ -1,0 +1,9 @@
+---
+- name: WordPress Infra Provisioning
+  hosts: localhost
+  gather_facts: true
+  connection: local
+  roles:
+    - wordpress-networking
+    - image-build
+    - deployment

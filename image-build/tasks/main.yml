@@ -1,0 +1,9 @@
+---
+# tasks file for deployment
+# tasks file for aws_role
+- include_vars:
+    file: credentials.yml
+
+- include_tasks: ec2_sg.yml
+- include_tasks: ec2.yml
+- include_tasks: terminate_ec2.yml 

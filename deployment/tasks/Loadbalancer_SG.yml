@@ -1,0 +1,21 @@
+---
+- name: Securiity Group creation for Wordpress-LB
+  ec2_group:
+    name: Wordpress-LB-SG
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    description: sg with rule descriptions
+    vpc_id: '{{ wordpress_vpc.vpc.id }}'
+    region: us-east-1
+    rules:
+      - proto: tcp
+        ports:
+        - 8080
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 8080
+  register: alb_sg
+
+- name: Debug mode for alb_sg.group_id
+  debug:
+      var: alb_sg.group_id
+

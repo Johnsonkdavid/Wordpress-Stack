@@ -1,0 +1,25 @@
+---
+- name: Security Group creation for AMI-Generator-EC2
+  ec2_group:
+    name: AMI-Generator-SG
+    aws_access_key: '{{ VAULT_AWS_ACCESS_KEY }}'
+    aws_secret_key: '{{ VAULT_AWS_SECRET_KEY }}'
+    description: sg with rule descriptions
+    vpc_id: '{{ wordpress_vpc.vpc.id }}'
+    region: us-east-1
+    rules:
+      - proto: tcp
+        ports:
+        - 80
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 80
+      - proto: tcp
+        ports:
+        - 22
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 22
+  register: ec2_sg
+
+- name: Debug mode for alb_sg.group_id
+  debug:
+      var: ec2_sg.group_id

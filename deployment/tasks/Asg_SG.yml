@@ -1,0 +1,20 @@
+---
+- name: Security Group creation for Wordpress-SG
+  ec2_group:
+    name: Wordpress-ASG-SG
+    description: sg with rule descriptions
+    vpc_id: '{{ wordpress_vpc.vpc.id }}'
+    region: us-east-1
+    rules:
+      - proto: tcp
+        ports:
+        - 80
+        group_id: '{{ alb_sg.group_id }}'
+        rule_desc: allow connection from alb_sg  on port 80
+
+  register: asg_sg
+
+- name: Debug mode for asg_sg.group_id
+  debug:
+      var: asg_sg.group_id
+
