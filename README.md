@@ -47,3 +47,8 @@ Steps for creating Ansible-Vault file:
 VAULT_AWS_ACCESS_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 VAULT_AWS_SECRET_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+**Clone this code, make your changes and run the wordpress-config.yml file with the below command**
+```bash
+ansible-playbook wordpress-config.yml --ask-vault-pass -vvvv
+```
