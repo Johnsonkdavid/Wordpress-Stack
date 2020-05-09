@@ -22,3 +22,5 @@
  - *image-build*
  - *deployment*
  
+**The above roles are invoked together in the main ansible file named wordpress-config.yml*
+**All you want to do is run the playbook and provision your infra**
