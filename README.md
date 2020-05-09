@@ -52,3 +52,8 @@ VAULT_AWS_SECRET_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```bash
 ansible-playbook wordpress-config.yml --ask-vault-pass -vvvv
 ```
+
+## Note:
+- Credentials are stored using ansible-vault.
+- The User_data file named 'db.sh' should need to modify accordingly.
+- Configuration files are stored in seperate S3 bucket and should need to attach an Instance role having access to the S3 and need to change the db.sh file.
