@@ -7,7 +7,7 @@
  - Private Subnet have S3 VPC endpoint
  - Allow only Ports 80,443,22 between private Subnet
 
-##Image Build
+## Image Build
  - Create a VM in Public Subnet 
  - Install WordPress inside the machine using Ansible/Shell script
  - Convert the Machine to AMI
@@ -16,3 +16,9 @@
  - Use the AMI and Create an Autoscaling group in Private subnet
  - Create Load balancer in Public Subnet
  - Expose the Load balancer endpoint
+ 
+ *These three phases are divided into three different ansible roles in this project. They are*
+ - *wordpress-networking
+ - *image-build
+ - *deployment
+ 
