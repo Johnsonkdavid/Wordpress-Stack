@@ -12,7 +12,7 @@
  - Install WordPress inside the machine using Ansible/Shell script
  - Convert the Machine to AMI
 
-##Deployment
+## Deployment
  - Use the AMI and Create an Autoscaling group in Private subnet
  - Create Load balancer in Public Subnet
  - Expose the Load balancer endpoint
