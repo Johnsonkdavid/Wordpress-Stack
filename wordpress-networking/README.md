@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Wordpress-networking is an ansible role which will create the VPC side for the infrastucutre. This includes VPC creation, private and public subnet creations, Route tables along with NAT and Internet Gateway.
 
 Requirements
 ------------
