@@ -3,10 +3,40 @@ Role Name
 
 Wordpress-networking is an ansible role which will create the VPC side for the infrastucutre. This includes VPC creation, private and public subnet creations, Route tables along with NAT and Internet Gateway.
 
-Requirements
+Role Structure
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+```bash
+wordpress-networking/
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   ├── igw.yml
+│   ├── main.yml
+│   ├── nacls.yml
+│   ├── nat_gw.yml
+│   ├── private_route_table.yml
+│   ├── private_subnet_1.yml
+│   ├── private_subnet_2.yml
+│   ├── public_route_table.yml
+│   ├── public_subnet_1.yml
+│   ├── public_subnet_2.yml
+│   ├── s3_endpoint.yml
+│   └── vpc.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    ├── credentials.yml
+    └── main.yml
+```    
 
 Role Variables
 --------------
