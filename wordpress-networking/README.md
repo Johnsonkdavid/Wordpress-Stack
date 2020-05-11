@@ -40,7 +40,7 @@ wordpress-networking/
 The above mentioned tasks are included together in main.yml file under tasks directory.
 ```bash
 ---
-# tasks file for wordpress-networkibg
+# tasks file for wordpress-networking
 - include_vars:
     file: credentials.yml
 - include_tasks: vpc.yml
