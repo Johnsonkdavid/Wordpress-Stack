@@ -37,7 +37,24 @@ wordpress-networking/
     ├── credentials.yml
     └── main.yml
 ```    
-
+The above mentioned tasks are included together in main.yml file under tasks directory.
+```bash
+---
+# tasks file for wordpress-networkibg
+- include_vars:
+    file: credentials.yml
+- include_tasks: vpc.yml
+- include_tasks: public_subnet_1.yml
+- include_tasks: public_subnet_2.yml
+- include_tasks: private_subnet_1.yml
+- include_tasks: private_subnet_2.yml
+- include_tasks: igw.yml
+- include_tasks: nat_gw.yml
+- include_tasks: public_route_table.yml
+- include_tasks: private_route_table.yml
+- include_tasks: s3_endpoint.yml
+- include_tasks: nacls.yml
+```
 Role Variables
 --------------
 
