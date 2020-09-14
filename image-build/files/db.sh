@@ -32,5 +32,5 @@ yum install -y php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip
 ##Installing httpd
 yum install -y httpd
 cp -r /tmp/wordpress/* /var/www/html
-aws s3 cp s3://worker212121/wp-config.php /var/www/html/
+aws s3 cp s3://<config-s3-bin-name>/wp-config.php /var/www/html/
 systemctl start httpd && systemctl enable httpd
